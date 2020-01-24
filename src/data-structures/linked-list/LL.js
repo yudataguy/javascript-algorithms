@@ -66,7 +66,79 @@ class LinkedList {
 
   }
 
+  insertAt(element, index){
+    const node = new Node(element)
+
+    if (index < 0 || index > this.size ){
+      return false
+    } else {
+      
+      let current, previous
+
+      current = this.head
+
+      if (index === 0){
+        node.next = this.head
+        this.head = node
+      } else {
+        let curIndex = 0
+        while (curIndex < index){
+          curIndex++
+          previous = current
+          current = current.next
+        }
+        node.next = current
+        previous.next = node
+      }
+
+      this.size++
+    }
+  }
+
+  removeAt(index){
+
+    if (index < 0 || index > this.size){
+      return false
+    } else {
+      let current, previous
+      current = this.head
+
+      if (index === 0){
+        this.head = this.head.next
+      } else {
+        let curIndex = 0
+        while (curIndex < index){
+          curIndex++
+          previous = current
+          current = current.next 
+        }
+        previous.next = current.next
+      }
+
+      this.size--
+    }
+  }
+
+  removeElement(element){
+    
+    let previous
+    let current = this.head
+    while (current !== null){
+      if (current.element === element){
+        if (!previous) this.head = current.next
+        else previous.next = current.next
+        this.size--
+        return current.element
+      }
+      previous = current
+      current = current.next
+    }
+    return false
+  }
+
 }
+
+// Test
 
 let ll = new LinkedList
 
@@ -74,12 +146,21 @@ ll.add('one')
 ll.add('two')
 ll.add('three')
 
-console.log(ll)
-
-ll.remove()
+ll.insertAt('new1', 1)
 
 console.log(ll)
 
-ll.prepand('newOne')
+// ll.insertAtAt('false', -1)
+
+ll.removeAt(1)
+
+// console.log(ll)
+
+const result = ll.removeElement('two')
 
 console.log(ll)
+console.log("Removed: ", result)
+
+// ll.prepand('newOne')
+
+// console.log(ll)
