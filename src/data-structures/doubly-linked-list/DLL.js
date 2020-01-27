@@ -32,7 +32,7 @@ class DoublyLinkedList {
     return this
   }
 
-  push(element){ // insert node at the head of DLL
+  prepend(element){ // insert node at the head of DLL
 
     const newNode = new Node(element)
 
@@ -46,12 +46,78 @@ class DoublyLinkedList {
     return this
   }
 
+  delete(element){
+    // remove element, change the previous - current - next relation
+    // next.previous = previous, previous.next = next 
+
+    let current = this.head
+    let next = current.next
+    let previous
+    if (this.head.element === element){
+      this.head = next
+      this.head.previous = null
+    } else {
+      while (current.element !== element){
+        previous = current
+        current = next
+        next = current.next
+      }
+
+      next.previous = previous
+      previous.next = next
+
+      this.size--
+      return this
+    }
+  }
+
+  fromArray(elArray){
+    elArray.forEach(el => this.append(el))
+    return this
+  }
+
+  toArray(){
+    let theArray = []
+
+    let current = this.head 
+    while (current){
+      theArray.push(current.element)
+      current = current.next
+    }
+    return theArray
+  }
+
+  reverse(){
+    let current = this.head
+    let previous, next
+
+    while (current){
+      next = current.next
+      previous = current.previous
+
+      current.next = previous
+      current.previous = next
+
+      previous = current
+      current = next
+    }
+
+    this.head = previous
+    return this
+  }
+
 }
 
 const newDLL = new DoublyLinkedList()
 
-console.log(newDLL.append('one')) 
+newDLL.append('one')
+newDLL.append('two')
+newDLL.prepend('newOne')
 
-console.log(newDLL.append('two'))
+newDLL.delete('one')
 
-console.log(newDLL.push('newOne'))
+newDLL.fromArray(['three', 'two', 'one'])
+
+newDLL.reverse()
+
+console.log(newDLL)
