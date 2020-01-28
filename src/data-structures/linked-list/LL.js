@@ -11,7 +11,7 @@ class LinkedList {
     this.size = 0
   }
 
-  add(element){ // add new node to the end of linked list
+  append(element){ // add new node to the end of linked list
     const node = new Node(element)
 
     let current
@@ -31,7 +31,7 @@ class LinkedList {
     this.size++
   }
 
-  remove(){ // remove node from the end of linked list
+  deleteTail(){ // remove node from the end of linked list
     let current, previous
 
     if (this.head === null) {
@@ -120,6 +120,8 @@ class LinkedList {
   }
 
   removeElement(element){
+
+    if(this.head === null) return null
     
     let previous
     let current = this.head
@@ -136,31 +138,101 @@ class LinkedList {
     return false
   }
 
+  find(element){
+    let previous
+    let current = this.head
+    while (current !== null){
+      if (current.element === element) {
+        return current
+      } else {
+        previous = current
+        current = current.next
+      }
+    }
+    return false
+  }
+
+  toArray(){
+    let result = []
+    let current = this.head
+    while (current !== null){
+      result.push(current.element)
+      current = current.next
+    }
+    return result
+  }
+
+  fromArray(array){
+    array.forEach(el => this.append(el))
+    return this
+  }
+
+  length(){
+    return this.size
+  }
+
+  reverse(){
+    let current = this.head
+    let previous = null
+    let next = null
+
+    while(current !== null){
+      next = current.next
+      current.next = previous
+      
+      previous = current
+      current = next
+    }
+
+    this.head = previous
+
+    return this
+
+  }
+
 }
 
 // Test
 
-let ll = new LinkedList
+// let ll = new LinkedList
 
-ll.add('one')
-ll.add('two')
-ll.add('three')
+// ll.add('one')
+// ll.add('two')
+// ll.add('three')
 
-ll.insertAt('new1', 1)
-
-console.log(ll)
-
-// ll.insertAtAt('false', -1)
-
-ll.removeAt(1)
+// ll.insertAt('new1', 1)
 
 // console.log(ll)
 
-const result = ll.removeElement('two')
+// // ll.insertAtAt('false', -1)
 
-console.log(ll)
-console.log("Removed: ", result)
+// ll.removeAt(1)
+
+// // console.log(ll)
+
+// const result = ll.removeElement('two')
+
+// console.log(ll)
+// console.log("Removed: ", result)
+
+// const findResult = ll.find('three')
+
+// console.log(findResult)
+
+// const arrayResult = ll.toArray()
+// console.log(arrayResult)
+
+// New Array to Linked List //
+
+let arrll = new LinkedList
+
+arrll.fromArray(['a', 'c', 'e', 134])
+
+console.log(arrll)
+
+console.log(arrll.reverse())
 
 // ll.prepand('newOne')
 
 // console.log(ll)
+
