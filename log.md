@@ -53,3 +53,18 @@
 
 * isEmpty
 * printQueue
+
+### Jan.28 2020
+
+#### Queue 2
+
+* front
+* enqueue
+* dequeue
+
+#### Stack 1
+
+* push
+* pop
+* isEmpty
+* front
