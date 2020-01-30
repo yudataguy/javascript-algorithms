@@ -33,6 +33,16 @@ class Stack{
     return this.items[0]
   }
   
+  toArray(){
+    return this.items
+  }
+
+  toString(){
+    let result = this.items.reduce((acc, cur) => {
+      return acc += cur
+    }, "")
+    return result
+  }
 }
 
 const ss = new Stack
@@ -47,4 +57,6 @@ console.log(ss.isEmpty())
 
 console.log(ss.front())
 
-console.log(ss.items)
+// console.log(ss.items)
+
+console.log(ss.toString())

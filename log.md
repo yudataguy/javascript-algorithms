@@ -68,3 +68,14 @@
 * pop
 * isEmpty
 * front
+
+### Jan.29 2020
+
+#### Stack 2
+
+* toArray
+* toString
+
+#### HashTable 1
+
+* hash
