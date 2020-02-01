@@ -79,3 +79,11 @@
 #### HashTable 1
 
 * hash
+
+### Jan.31 2020
+
+#### Heap 1
+
+* peek
+* poll
+* add

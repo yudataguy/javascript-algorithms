@@ -25,6 +25,14 @@ class HashTable{
   set(key, value){
     const hashedKey = this.hash(key)
     // use linked list to setup duplicate key
+    let bucket = this.table[hashedKey]
+    
+    if (!bucket){
+      bucket = []
+      this.table[hashedKey] = bucket
+    }
+
+    
     
   }
 }
