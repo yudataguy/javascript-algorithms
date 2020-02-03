@@ -87,3 +87,28 @@
 * peek
 * poll
 * add
+
+### Feb.01 2020
+
+#### Heap 2
+
+* helper functions
+* heapifyUP
+* heapifyDown
+* isEmpty
+
+
+### Feb.02 2020
+
+#### Heap 3
+
+* find
+
+#### Priority Queue 1
+
+* add
+* remove
+* findByValue
+* hasValue
+* changePriority
+* comparePriority
